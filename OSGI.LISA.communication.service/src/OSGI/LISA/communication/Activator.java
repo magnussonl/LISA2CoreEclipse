@@ -7,7 +7,6 @@ import org.osgi.framework.ServiceRegistration;
 public class Activator implements BundleActivator {
 	ServiceRegistration comServiceRegistration;
     public void start(BundleContext context) throws Exception {
-    	System.out.println("assssss");
         CommunicationServiceFactory comServiceFactory = new CommunicationServiceFactory();
         comServiceRegistration =context.registerService(HardwareCommunication.class.getName(), comServiceFactory, null);
     }

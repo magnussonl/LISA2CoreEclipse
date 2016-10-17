@@ -5,7 +5,6 @@ import org.osgi.util.tracker.ServiceTracker;
 
 
 
-
 public class CommunicationServiceTracker extends ServiceTracker {
     public CommunicationServiceTracker(BundleContext context) {
         super(context, HardwareCommunication.class.getName(),null);
