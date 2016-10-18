@@ -17,7 +17,7 @@ public class Activator implements BundleActivator {
 		testConf.setPassword("test");
 		testConf.setPort(22);
 		testConf.setUsername("asdasd");
-		ConfigFunctions.createConfigFile("12311", 22);
+		Config conf = ConfigFunctions.getConfig();
 		
 	}
 
