@@ -10,6 +10,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.security.AccessController;
+import java.security.PrivilegedActionException;
+import java.security.PrivilegedExceptionAction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -35,11 +38,20 @@ public class ConfigFunctions {
     //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
     private static void setJAXBContext() {
         System.setProperty("javax.xml.bind.context.factory", "org.eclipse.persistence.jaxb.JAXBContextFactory");
-        try {
-            jc = JAXBContext.newInstance(Config.class);
-        } catch (JAXBException ex) {
-            Logger.getLogger(ConfigFunctions.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+            try {
+				jc =  AccessController.doPrivileged(new PrivilegedExceptionAction<JAXBContext>() {
+
+				    public JAXBContext run() throws JAXBException {
+
+				        // needs to run here otherwise throws AccessControlException
+				        return JAXBContext.newInstance(Config.class);
+				    }
+				});
+			} catch (PrivilegedActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     }
 
     private static void setMarshaller() {
