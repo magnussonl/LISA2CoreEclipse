@@ -77,26 +77,32 @@ public class ConfigFunctions {
         }
     }
 
-    public static Config getConfig(BundleContext context) {
-        Config retConf = null;
-        try {
-            setJAXBContext();
-            setUnmarshaller();
+    public static Config getConfig() {
+        Config retConf = new Config();
+       
+//            setJAXBContext();
+//            setUnmarshaller();
+//            
+//            String configIn = "{\"config\" : { \"ip\" : \"localhost\", \"username\" : \"karaf\", \"password\" : \"karaf\", \"port\" : 61616  }}";
+//            
+//            //URL configURL = context.getBundle().getEntry(file);
+//            //InputStream input = configURL.openStream();
+//            
+//            StreamSource json = new StreamSource(configIn);
+//            
+//            try {
+//				retConf = unmarshaller.unmarshal(json, Config.class).getValue();
+//			} catch (JAXBException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//            
+        retConf.setIp("localhost");
+        retConf.setUsername("karaf");
+        retConf.setPassword("karaf");
+        retConf.setPort(61616);
             
-            URL configURL = context.getBundle().getEntry(file);
-            InputStream input = configURL.openStream();
-            
-            StreamSource json = new StreamSource(input);
-            
-            retConf = unmarshaller.unmarshal(json, Config.class).getValue();
-            
-            
-        } catch (FileNotFoundException | JAXBException ex) {
-            Logger.getLogger(ConfigFunctions.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        
         return retConf;
     }
     //</editor-fold>

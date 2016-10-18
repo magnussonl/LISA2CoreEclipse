@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="activemq-all-5.11.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="activeio-core-3.1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-amqp-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-broker-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-camel-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-client-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-console-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-http-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-jdbc-store-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-jms-pool-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-kahadb-store-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-karaf-5.13.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-leveldb-store-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-mqtt-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-openwire-legacy-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-osgi-5.13.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-pool-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-spring-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-stomp-5.11.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="activemq-protobuf-1.1-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
