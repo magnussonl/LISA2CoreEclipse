@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Glassfish
+Bundle-SymbolicName: org.glassfish
+Bundle-Version: 1.0.0
+Bundle-ClassPath: javax.json-1.0.4.jar
+Export-Package: javax.json,
+ javax.json.spi,
+ javax.json.stream,
+ org.glassfish.json,
+ org.glassfish.json.api
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
