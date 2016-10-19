@@ -1,25 +1,32 @@
 package OSGI.LISA.communication.services;
 
+import org.opcfoundation.ua.builtintypes.DataValue;
+
+import com.prosysopc.ua.client.UaClient;
+
 import OSGI.LISA.communication.HardwareCommunication;
 
 public class OPC implements HardwareCommunication {
 
 	@Override
-	public boolean getConnection(String url) {
+	public boolean connect(String url) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean readInt(int lvl, String name) {
-		System.out.println(lvl + " name: " + name + " OPC");
-		return false;
+	public DataValue readValue(int lvl, String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void setInt(int lvl, String name, int value) {
+	public boolean setInt(int lvl, String name, int value) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
+
+
 
 }

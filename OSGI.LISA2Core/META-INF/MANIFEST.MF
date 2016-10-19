@@ -4,7 +4,20 @@ Bundle-Name: LISA2Core
 Bundle-SymbolicName: OSGI.LISA2Core
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: LISA.Utils,
+Import-Package: com.google.common.collect,
+ javax.jms,
+ javax.json,
+ javax.json.stream,
+ javax.validation,
+ org.apache.activemq,
+ org.eclipse.persistence,
+ org.eclipse.persistence.jaxb,
+ org.glassfish.json,
+ org.osgi.framework
+Export-Package: LISA.EndPointCore,
+ LISA.Message,
+ LISA.ServiceCore,
+ LISA.ServiceCore.Publisher,
+ LISA.ServiceCore.Subscriber,
+ LISA.Utils,
  LISA.Utils.Config
-Import-Package: org.osgi.framework;version="1.8.0"
-Bundle-Activator: Activator
