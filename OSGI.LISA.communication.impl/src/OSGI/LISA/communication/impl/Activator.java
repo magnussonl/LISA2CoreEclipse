@@ -1,8 +1,5 @@
 package OSGI.LISA.communication.impl;
 
-import java.lang.reflect.Method;
-import java.util.Iterator;
-
 import org.opcfoundation.ua.builtintypes.DataValue;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
