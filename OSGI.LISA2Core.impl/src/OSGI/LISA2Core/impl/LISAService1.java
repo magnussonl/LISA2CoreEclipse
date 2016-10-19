@@ -27,7 +27,7 @@ public class LISAService1 extends LISAServiceCore {
 
     @Override
     public void onStart() {
-
+    	setExecuteFrequency(500);
     }
 
     @Override
@@ -45,11 +45,7 @@ public class LISAService1 extends LISAServiceCore {
         
 
         publisher.sendMsg(msgToSend);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(LISAService1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
         return false;
     }

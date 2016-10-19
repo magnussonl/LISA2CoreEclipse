@@ -110,7 +110,6 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
 	public long getExecuteFrequency() {
 		return executeFrequency;
 	}
-	
 	/**
      * Setting the execution frequency of each service, the minimum time between execution
      * 
@@ -122,6 +121,11 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
 	public long getExecutionTimestamp() {
 		return executionTimestamp;
 	}
+	/**
+     * Timestamp indicating the last execution of this service
+     * 
+     * @param executionTimestamp - the value in nanoseconds of the execution time
+     */
 	public void setExecutionTimestamp(long executionTimestamp) {
 		this.executionTimestamp = executionTimestamp;
 	}

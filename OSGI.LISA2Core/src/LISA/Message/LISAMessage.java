@@ -56,7 +56,7 @@ public class LISAMessage {
     
     @Override
     public String toString() {
-        return this.getMessageHeader().toString() + this.getMessageBody().toString();
+        return this.getMessageHeader().toString() + "\n" + this.getMessageBody().toString();
     }
     
 }
