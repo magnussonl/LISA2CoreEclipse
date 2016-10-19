@@ -19,8 +19,11 @@ public class OPCEndPoint extends LISAEndPointCore implements BundleActivator {
 		Connection connection = createConnection();
 		
 		CommunicationService s = new CommunicationService(connection, "test","test", context);
+		CommunicationService2 s2 = new CommunicationService2(connection, "test","test", context);
 		
 		services.put("OPCService", s);
+		services.put("OPCService2", s2);
+		
 		
 		endpointThread.start();
 		

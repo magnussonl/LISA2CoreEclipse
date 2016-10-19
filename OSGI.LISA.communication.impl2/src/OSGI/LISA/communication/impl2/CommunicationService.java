@@ -27,12 +27,14 @@ public class CommunicationService extends LISAServiceCore {
 		serviceTracker.open();
 		comService = (HardwareCommunication) serviceTracker.getService();
 		comService.connect("opc.tcp://DESKTOP-OHVUEFM:53530/OPCUA/SimulationServer");
+		setExecuteFrequency(1000);
 		
 	}
 
 	@Override
 	public boolean action() {
 		DataValue value = comService.readValue(2, "MyLevel");
+		System.out.println("Com1");
 		System.out.println(value);
 		return false;
 	}

@@ -100,9 +100,14 @@ public class LISAEndPointCore implements Runnable {
                     s.setState(ServiceState.ACTION);
                 }
                 if (state.equals(ServiceState.ACTION)) {
-                    if (s.action()) {
-                        s.setState(ServiceState.END);
-                    }
+                	if(System.nanoTime()-s.getExecutionTimestamp() > s.getExecuteFrequency()*1000000) {
+                		if (s.action()) {
+                            s.setState(ServiceState.END);
+                        } else {
+                        	s.setExecutionTimestamp(System.nanoTime());
+                        }
+                	}
+                    
                 }
                 if (state.equals(ServiceState.END)) {
                     s.end();

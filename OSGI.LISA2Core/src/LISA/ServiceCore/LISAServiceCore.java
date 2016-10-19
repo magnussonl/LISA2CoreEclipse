@@ -30,6 +30,8 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     protected ServiceState state;
     protected String serviceID;
     public ListMultimap<String, String> dataMapping;
+    protected long executeFrequency = 0;
+    protected long executionTimestamp = 0;
 
     /**
      * Use this constructor to run the subscriber and the publisher on the same topic
@@ -105,5 +107,24 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     public void setServiceID(String serviceID) {
         this.serviceID = serviceID;
     }
+	public long getExecuteFrequency() {
+		return executeFrequency;
+	}
+	
+	/**
+     * Setting the execution frequency of each service, the minimum time between execution
+     * 
+     * @param executeFrequency Time in milliseconds. Default = 0
+     */
+	public void setExecuteFrequency(long executeFrequency) {
+		this.executeFrequency = executeFrequency;
+	}
+	public long getExecutionTimestamp() {
+		return executionTimestamp;
+	}
+	public void setExecutionTimestamp(long executionTimestamp) {
+		this.executionTimestamp = executionTimestamp;
+	}
+    
     //</editor-fold>
 }
