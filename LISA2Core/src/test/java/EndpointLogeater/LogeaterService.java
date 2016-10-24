@@ -41,6 +41,7 @@ public class LogeaterService extends LISAServiceCore {
         strFile = FileFunctions.readFile("src/test/java/EndpointLogeater/prodE.txt").split("\n");
 
         String[] tempStr;
+        setExecuteFrequency(1000);
 
         for (String string : strFile) {
 
@@ -81,11 +82,7 @@ public class LogeaterService extends LISAServiceCore {
             strList.remove(0);
             
             publisher.sendMsg(logMsg);
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(LogeaterService.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
             return false;
         }
 
