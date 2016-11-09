@@ -26,73 +26,98 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  *
  * @author Linus
  */
-public class LISAEndPointCore implements Runnable {
+public abstract class LISAEndPointCore implements Runnable {
 
-	private static LISAEndPointCore instance = null;
-	private static String url;
-	private static String username;
-	private static String password;
-	private static ActiveMQConnectionFactory connectionFactory = null;
-	private static Connection connection = null;
-	private static Config config = null;
-	public static final Thread endpointThread = new Thread(new LISAEndPointCore());
-	public static HashMap<String, LISAServiceCore> services = new HashMap<String, LISAServiceCore>();
-	public static ListMultimap<String, String> dataMapping = ArrayListMultimap.create();
-	public static String ipAdress;
-	public static String endpointName = null;
+	private String url;
+	private String username;
+	private String password;
+	private ActiveMQConnectionFactory connectionFactory = null;
+	private Connection connection = null;
+	private Config config = null;
+	private Thread endpointThread;
+	public HashMap<String, LISAServiceCore> services = new HashMap<String, LISAServiceCore>();
+	public ListMultimap<String, String> dataMapping = ArrayListMultimap.create();
+	private String ipAdress;
+	private String endpointName = this.getClass().getName();
+	private String endpointDescription = "";
+	
+	
 
-	protected LISAEndPointCore() {
+	public LISAEndPointCore() {
 		config = ConfigFunctions.getConfig();
 		setUrl("tcp://" + config.getIp() + ":" + config.getPort());
 		setUsername(config.getUsername());
 		setPassword(config.getPassword());
+		endpointThread =  new Thread(this);
 		try {
-			ipAdress = InetAddress.getLocalHost().getHostAddress();
+			this.setIpAdress(InetAddress.getLocalHost().getHostAddress());
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public static LISAEndPointCore getInstanceCore() {
-		if (instance == null) {
-			synchronized (LISAEndPointCore.class) {
-				instance = new LISAEndPointCore();
-			}
-		}
-		return instance;
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public static void setUrl(String url) {
-		LISAEndPointCore.url = url;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public static void setUsername(String username) {
-		LISAEndPointCore.username = username;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public static void setPassword(String password) {
-		LISAEndPointCore.password = password;
-	}
-
-	public static String getEndpointName() {
+	public String getEndpointName() {
 		return endpointName;
 	}
 
-	public static void setEndpointName(String endpointName) {
-		LISAEndPointCore.endpointName = endpointName;
+	public void setEndpointName(String endpointName) {
+		this.endpointName = endpointName;
 	}
 
-	public static Connection createConnection() {
+	public String getIpAdress() {
+		return ipAdress;
+	}
+
+
+	public void setIpAdress(String ipAdress) {
+		this.ipAdress = ipAdress;
+	}
+
+
+	public Thread getEndpointThread() {
+		return endpointThread;
+	}
+
+
+	public void setEndpointThread(Thread endpointThread) {
+		this.endpointThread = endpointThread;
+	}
+	
+
+	public String getEndpointDescription() {
+		return endpointDescription;
+	}
+
+
+	public void setEndpointDescription(String endpointDescription) {
+		this.endpointDescription = endpointDescription;
+	}
+
+
+	public Connection createConnection() {
 		try {
-			connectionFactory = new ActiveMQConnectionFactory(username, password, url);
-			connection = connectionFactory.createConnection();
-			connection.start();
+			this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
+			this.connection = connectionFactory.createConnection();
+			this.connection.start();
 
 		} catch (JMSException ex) {
 			Logger.getLogger(LISAEndPointCore.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		return connection;
+		return this.connection;
 	}
 
 	public void run() {
@@ -131,4 +156,8 @@ public class LISAEndPointCore implements Runnable {
 			}
 		}
 	}
+
+	
+
+	
 }

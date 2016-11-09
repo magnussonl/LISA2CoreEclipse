@@ -5,9 +5,14 @@
  */
 package LISA.ServiceCore;
 
+import LISA.EndPointCore.LISAEndPointCore;
+import LISA.Message.KeyPairValue;
+import LISA.Message.LISAMessage;
 import LISA.ServiceCore.Publisher.Publisher;
 import LISA.ServiceCore.Subscriber.Subscriber;
 import com.google.common.collect.ListMultimap;
+
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jms.Connection;
@@ -29,9 +34,13 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     protected String topicStrSub, topicStrPub;
     protected ServiceState state;
     protected String serviceID;
+    protected LISAEndPointCore ep;
+    protected String serviceName = this.getClass().getName();
+    protected String serviceDescription = "";
     public ListMultimap<String, String> dataMapping;
     protected long executeFrequency = 0;
     protected long executionTimestamp = 0;
+    
 
     /**
      * Use this constructor to run the subscriber and the publisher on the same topic
@@ -40,7 +49,8 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
      * @param topicIn Name of the topic you want the subscriber and publisher to
      * have
      */
-    public LISAServiceCore(Connection connection, String topicIn) {
+    public LISAServiceCore(LISAEndPointCore epIn, Connection connection, String topicIn) {
+    	this.ep = epIn;
         this.connection = connection;
         this.topicStrSub = topicIn;
         this.topicStrPub = topicIn;
@@ -54,7 +64,8 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
      * @param topicInSub Name of the topic you want the subscriber to subscribe on
      * @param topicInPub Name of the topic you want the publisher to publish on
      */
-    public LISAServiceCore(Connection connection, String topicInSub, String topicInPub) {
+    public LISAServiceCore(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
+    	this.ep = epIn;
         this.connection = connection;
         this.topicStrSub = topicInSub;
         this.topicStrPub = topicInPub;
@@ -65,9 +76,26 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
         createSession();
         createPublisher(topicStrPub);
         createSubscriber(topicStrSub);
+        registerService();
     }
 
-    private void createSession() {
+    private void registerService() {
+    	System.out.println("sendning msg from " + this.getClass().getName());
+    	LISAMessage registerMsg = new LISAMessage();
+		registerMsg.getMessageBody().setType("ServiceMonitoringRegister");
+		
+		LinkedList<KeyPairValue> dataList = new LinkedList<KeyPairValue>();
+		dataList.add(new KeyPairValue("EndPoint", ep.getEndpointName()));
+		dataList.add(new KeyPairValue("EndPointDescription", ep.getEndpointDescription()));
+        dataList.add(new KeyPairValue("Service", getServiceName()));
+        dataList.add(new KeyPairValue("ServiceDescription", getServiceDescription()));
+        
+        
+		registerMsg.getMessageBody().addKeyPairValues(dataList);
+		publisher.sendMsg(registerMsg);
+		
+	}
+	private void createSession() {
         try {
             if (this.connection != null) {
                 Session sessionNew = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -96,7 +124,7 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
         this.state = state;
     }
 
-    public void setDataMap(ListMultimap map) {
+    public void setDataMap(ListMultimap<String, String> map) {
         this.dataMapping = map;
     }
 
@@ -109,6 +137,12 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     }
 	public long getExecuteFrequency() {
 		return executeFrequency;
+	}
+	public String getServiceName() {
+		return serviceName;
+	}
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 	/**
      * Setting the execution frequency of each service, the minimum time between execution
@@ -129,6 +163,13 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
 	public void setExecutionTimestamp(long executionTimestamp) {
 		this.executionTimestamp = executionTimestamp;
 	}
+	public String getServiceDescription() {
+		return serviceDescription;
+	}
+	public void setServiceDescription(String serviceDescription) {
+		this.serviceDescription = serviceDescription;
+	}
     
+	
     //</editor-fold>
 }

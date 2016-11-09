@@ -8,32 +8,19 @@ import org.osgi.framework.BundleContext;
 import LISA.EndPointCore.LISAEndPointCore;
 import OSGI.LISA.communication.HardwareCommunication;
 
+public class OPCEndPoint extends LISAEndPointCore {
+	public OPCEndPoint(BundleContext context) {
 
-public class OPCEndPoint extends LISAEndPointCore implements BundleActivator {
-	
-
-
-	@Override
-	public void start(BundleContext context) throws Exception {
-		
 		Connection connection = createConnection();
-		
-		CommunicationService s = new CommunicationService(connection, "test","test", context);
-		CommunicationService2 s2 = new CommunicationService2(connection, "test","test", context);
-		
+
+		CommunicationService s = new CommunicationService(this, connection, "test", "test", context);
+		CommunicationService2 s2 = new CommunicationService2(this, connection, "test", "test", context);
+
 		services.put("OPCService", s);
 		services.put("OPCService2", s2);
-		
-		
-		endpointThread.start();
-		
-		
+
+		getEndpointThread().start();
+
 	}
 
-	@Override
-	public void stop(BundleContext arg0) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

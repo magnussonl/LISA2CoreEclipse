@@ -18,7 +18,7 @@ public class Activator implements BundleActivator {
 		serviceTracker.open();
 		HardwareCommunication comService = (HardwareCommunication) serviceTracker.getService();
 		
-
+		new OPCEndPoint(context);
 
 	}
 

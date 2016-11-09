@@ -18,7 +18,9 @@ public class LISAMessageHeader {
     private String senderID;
     private boolean handshakeConfirmation;
     
-    
+    protected LISAMessageHeader() {
+    	
+    }
     
     //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public String getID() {

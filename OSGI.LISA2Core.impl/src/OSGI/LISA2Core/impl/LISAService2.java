@@ -1,4 +1,5 @@
 package OSGI.LISA2Core.impl;
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.Message.KeyPairValue;
 import LISA.Message.LISAMessage;
 import LISA.ServiceCore.LISAServiceCore;
@@ -18,8 +19,8 @@ import javax.jms.TextMessage;
 public class LISAService2 extends LISAServiceCore {
 
 
-    public LISAService2(Connection connection, String topicStr, String topicStr2) {
-        super(connection, topicStr, topicStr2);
+    public LISAService2(LISAEndPointCore epIn, Connection connection, String topicStr, String topicStr2) {
+        super(epIn, connection, topicStr, topicStr2);
 
     }
 
@@ -33,12 +34,12 @@ public class LISAService2 extends LISAServiceCore {
                 LISAMessage msg = (LISAMessage)LISAMarshaller.unMarshall(LISAMessage.class, text);
                 
                 LinkedList<KeyPairValue> list = msg.getMessageBody().getKeyPairValues();
-                int i = 0;
-                for (KeyPairValue keyPairValue : list) {
-                    System.out.println(keyPairValue);
-                    System.out.println(i);
-                    i++;
-                }
+//                int i = 0;
+//                for (KeyPairValue keyPairValue : list) {
+//                    System.out.println(keyPairValue);
+//                    System.out.println(i);
+//                    i++;
+//                }
             }
         } catch (JMSException ex) {
             Logger.getLogger(LISAService1.class.getName()).log(Level.SEVERE, null, ex);

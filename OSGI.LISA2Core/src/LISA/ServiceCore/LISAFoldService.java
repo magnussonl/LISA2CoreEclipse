@@ -8,6 +8,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.Message.LISAMessage;
 import LISA.Utils.LISAMarshaller;
 
@@ -16,13 +17,13 @@ public abstract class LISAFoldService extends LISAServiceCore {
 	protected int maxSize = 10;
 	protected List<LISAMessage> dataList = new LinkedList<LISAMessage>();
 
-	public LISAFoldService(Connection connection, String topicIn) {
-		super(connection, topicIn);
+	public LISAFoldService(LISAEndPointCore epIn, Connection connection, String topicIn) {
+		super(epIn, connection, topicIn);
 		// TODO Auto-generated constructor stub 
 	}
 
-	public LISAFoldService(Connection connection, String topicInSub, String topicInPub) {
-		super(connection, topicInSub, topicInPub);
+	public LISAFoldService(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
+		super(epIn, connection, topicInSub, topicInPub);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -51,7 +52,7 @@ public abstract class LISAFoldService extends LISAServiceCore {
 					dataList.add(lisaMsg);
 				}
 				LISAMessage msgToSend = fold(this.dataList);
-				//publisher.sendMsg(msgToSend);
+				publisher.sendMsg(msgToSend);
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

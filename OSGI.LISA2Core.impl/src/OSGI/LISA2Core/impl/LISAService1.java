@@ -1,11 +1,10 @@
 package OSGI.LISA2Core.impl;
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.Message.KeyPairValue;
 import LISA.Message.LISAMessage;
 import LISA.ServiceCore.LISAServiceCore;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.jms.Connection;
 import javax.jms.Message;
 
@@ -15,8 +14,8 @@ import javax.jms.Message;
  */
 public class LISAService1 extends LISAServiceCore {
 
-    public LISAService1(Connection connection, String topicStr, String topicStr2) {
-        super(connection, topicStr, topicStr2);
+    public LISAService1(LISAEndPointCore epIn, Connection connection, String topicStr, String topicStr2) {
+        super(epIn, connection, topicStr, topicStr2);
 
     }
 
@@ -35,6 +34,8 @@ public class LISAService1 extends LISAServiceCore {
 
         LISAMessage msgToSend = new LISAMessage();
 
+        msgToSend.getMessageBody().setType("testMess");
+        
         LinkedList<KeyPairValue> dataList = new LinkedList<KeyPairValue>();
 
         dataList.add(new KeyPairValue("time", " " + (new Date()).getTime()));

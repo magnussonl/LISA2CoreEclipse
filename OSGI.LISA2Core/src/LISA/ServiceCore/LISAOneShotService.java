@@ -7,14 +7,16 @@ package LISA.ServiceCore;
 
 import javax.jms.Connection;
 
+import LISA.EndPointCore.LISAEndPointCore;
+
 /**
  *
  * @author jpdsf
  */
 public abstract class LISAOneShotService extends LISAServiceCore{
 
-    public LISAOneShotService(Connection connection, String topicIn) {
-        super(connection, topicIn);
+    public LISAOneShotService(LISAEndPointCore epIn, Connection connection, String topicIn) {
+        super(epIn, connection, topicIn);
     }
 
     public abstract void oneShotAction();

@@ -1,37 +1,27 @@
 package OSGI.LISA2Core.impl;
 
-import javax.jms.Connection;
-
-
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import LISA.EndPointCore.LISAEndPointActivator;
+import LISA.EndPointCore.LISAEndPointCore;
 
 
-public class Activator extends LISAEndPointActivator {
+public class Activator implements BundleActivator {
 
 	@Override
-	public void onStart(BundleContext context) {
+	public void start(BundleContext context) throws Exception {
 		// TODO Auto-generated method stub
-		Connection connection = createConnection();
-
-        LISAService1 s1 = new LISAService1(connection, "test", "test");
-        LISAService2 s2 = new LISAService2(connection, "test", "test");
-        TestOfFoldService s3 = new TestOfFoldService(connection, "test", "test");
-
-        services.put("s1", s1);
-        services.put("s2", s2);
-        services.put("FoldService", s3);
-
-        endpointThread.start();
 		
+		new LISAEndPoint();
 	}
 
 	@Override
-	public void onStop(BundleContext context) {
+	public void stop(BundleContext context) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 

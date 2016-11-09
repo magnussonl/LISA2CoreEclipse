@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.jms.Connection;
 
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.Message.LISAMessage;
 import LISA.ServiceCore.LISAFoldService;
 
 public class TestOfFoldService extends LISAFoldService {
 
-	public TestOfFoldService(Connection connection, String topicInSub, String topicInPub) {
-		super(connection, topicInSub, topicInPub);
+	public TestOfFoldService(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
+		super(epIn, connection, topicInSub, topicInPub);
 		// TODO Auto-generated constructor stub
 	}
 

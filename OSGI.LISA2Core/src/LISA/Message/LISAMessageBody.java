@@ -17,7 +17,11 @@ public class LISAMessageBody {
     private LinkedList<KeyPairValue> keyPairValues = new LinkedList<KeyPairValue>();
     private String type;
 
-    //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
+    protected LISAMessageBody() {
+		
+	}
+
+	//<editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public LinkedList<KeyPairValue> getKeyPairValues() {
         return keyPairValues;
     }

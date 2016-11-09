@@ -7,14 +7,16 @@ package LISA.ServiceCore;
 
 import javax.jms.Connection;
 
+import LISA.EndPointCore.LISAEndPointCore;
+
 /**
  *
  * @author jpdsf
  */
 public abstract class LISASimpleService extends LISAServiceCore{
     
-    public LISASimpleService(Connection connection, String topicIn) {
-        super(connection, topicIn);
+    public LISASimpleService(LISAEndPointCore epIn, Connection connection, String topicIn) {
+        super(epIn, connection, topicIn);
     }
     
 

@@ -5,6 +5,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.Message.LISAMessage;
 import LISA.Utils.LISAMarshaller;
 
@@ -12,12 +13,12 @@ public abstract class LISAMapService extends LISAServiceCore {
 
 	
 
-	public LISAMapService(Connection connection, String topicIn) {
-		super(connection, topicIn);
+	public LISAMapService(LISAEndPointCore epIn, Connection connection, String topicIn) {
+		super(epIn, connection, topicIn);
 		// TODO Auto-generated constructor stub
 	}
-	public LISAMapService(Connection connection, String topicInSub, String topicInPub) {
-		super(connection, topicInSub, topicInPub);
+	public LISAMapService(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
+		super(epIn, connection, topicInSub, topicInPub);
 		// TODO Auto-generated constructor stub
 	}
 

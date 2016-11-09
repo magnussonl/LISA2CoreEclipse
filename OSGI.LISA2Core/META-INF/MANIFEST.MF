@@ -13,7 +13,8 @@ Import-Package: com.google.common.collect,
  org.eclipse.persistence,
  org.eclipse.persistence.jaxb,
  org.glassfish.json,
- org.osgi.framework
+ org.osgi.framework,
+ org.osgi.util.tracker;version="1.5.1"
 Export-Package: LISA.EndPointCore,
  LISA.Message,
  LISA.ServiceCore,

@@ -6,6 +6,7 @@ import javax.jms.Message;
 import org.opcfoundation.ua.builtintypes.DataValue;
 import org.osgi.framework.BundleContext;
 
+import LISA.EndPointCore.LISAEndPointCore;
 import LISA.ServiceCore.LISAServiceCore;
 import OSGI.LISA.communication.CommunicationServiceTracker;
 import OSGI.LISA.communication.HardwareCommunication;
@@ -16,8 +17,8 @@ public class CommunicationService2 extends LISAServiceCore {
 	CommunicationServiceTracker serviceTracker;
 	BundleContext context;
 	
-	public CommunicationService2(Connection connection, String topicInSub, String topicInPub, BundleContext context) {
-        super(connection, topicInSub, topicInPub);
+	public CommunicationService2(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub, BundleContext context) {
+        super(epIn, connection, topicInSub, topicInPub);
         this.context = context;
     }
 
