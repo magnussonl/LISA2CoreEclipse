@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RobotA
+Bundle-SymbolicName: OSGi.LISA.sim.com.RobotA
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: osgi.lisa.sim.com.robota.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: LISA.EndPointCore,
+ LISA.ServiceCore,
+ javax.jms,
+ org.opcfoundation.ua.builtintypes,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.5.1"
+Export-Package: osgi.lisa.sim.com.robota.communication

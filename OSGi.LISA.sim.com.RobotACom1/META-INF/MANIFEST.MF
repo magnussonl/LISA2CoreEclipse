@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RobotACom1
+Bundle-SymbolicName: OSGi.LISA.sim.com.RobotACom1
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: osgi.lisa.sim.com.robotacom1.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.opcfoundation.ua.builtintypes,
+ org.osgi.framework;version="1.3.0",
+ osgi.lisa.sim.com.robota.communication
