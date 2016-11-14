@@ -34,7 +34,7 @@ public class ServiceMonitoringService extends LISAServiceCore {
 
 	@Override
 	public boolean action() {
-		System.out.println(mainServices);
+		//System.out.println(mainServices);
 		return false;
 	}
 
