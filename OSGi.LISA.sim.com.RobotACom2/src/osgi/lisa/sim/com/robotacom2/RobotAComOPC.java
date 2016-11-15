@@ -1,11 +1,12 @@
-package osgi.lisa.sim.com.robotacom1;
+package osgi.lisa.sim.com.robotacom2;
+
 
 
 import org.opcfoundation.ua.builtintypes.DataValue;
 
 import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
 
-public class RobotAComOPCUA implements RobotAHardwareCommunication {
+public class RobotAComOPC implements RobotAHardwareCommunication {
 
 	@Override
 	public boolean connect(String url) {
@@ -15,7 +16,7 @@ public class RobotAComOPCUA implements RobotAHardwareCommunication {
 
 	@Override
 	public DataValue readValue(int lvl, String name) {
-		System.out.println("reading value in OPCUA");
+		System.out.println("reading value in OPC");
 		return null;
 	}
 

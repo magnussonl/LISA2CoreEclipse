@@ -6,30 +6,32 @@ import javax.jms.Message;
 import org.osgi.util.tracker.ServiceTracker;
 
 import LISA.EndPointCore.LISAEndPointCore;
-import LISA.ServiceCore.LISAServiceCore;
+import LISA.ServiceCore.LISAHardwareCommunicationService;
 import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
-import osgi.lisa.sim.com.robota.communication.RobotAServiceTracker;
 
-public class RobotAReaderService extends LISAServiceCore {
+public class RobotAReaderService extends LISAHardwareCommunicationService {
 	
-	ServiceTracker serviceTracker;
 	RobotAHardwareCommunication hardCom;
 
 	public RobotAReaderService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker st) {
-		super(epIn, connection, topicIn);
-		this.serviceTracker = st;
+		super(epIn, connection, topicIn, st);
+		
 	}
 
 	@Override
 	public void onStart() {
-		hardCom = (RobotAHardwareCommunication) serviceTracker.getService();
+
 		
 		setExecuteFrequency(1000);
-		
+
 	}
 
 	@Override
 	public boolean action() {
+		
+		Long time = System.nanoTime();
+		
+		System.out.println(time);
 		
 		hardCom.readValue(1, "a");
 		return false;
@@ -44,6 +46,12 @@ public class RobotAReaderService extends LISAServiceCore {
 	@Override
 	public void onMessage(Message arg0) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignCommunicationService() {
+		hardCom = (RobotAHardwareCommunication) serviceTracker.getService();
 		
 	}
 	

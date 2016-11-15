@@ -40,6 +40,7 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     public ListMultimap<String, String> dataMapping;
     protected long executeFrequency = 0;
     protected long executionTimestamp = 0;
+    protected boolean started = false;
     
 
     /**
@@ -168,6 +169,12 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
 	}
 	public void setServiceDescription(String serviceDescription) {
 		this.serviceDescription = serviceDescription;
+	}
+	public boolean isStarted() {
+		return started;
+	}
+	public void setStarted(boolean started) {
+		this.started = started;
 	}
     
 	
