@@ -16,9 +16,9 @@ public class Activator implements BundleActivator {
 		serviceTracker.open();
 		HardwareCommunication comService = (HardwareCommunication) serviceTracker.getService();
 		
-		comService.connect("opc.tcp://DESKTOP-OHVUEFM:53530/OPCUA/SimulationServer");
-		DataValue value = comService.readValue(2, "MyLevel");
-		System.out.println(value);
+		//comService.connect("opc.tcp://DESKTOP-OHVUEFM:53530/OPCUA/SimulationServer");
+		//DataValue value = comService.readValue(2, "MyLevel");
+		//System.out.println(value);
 
 	}
 

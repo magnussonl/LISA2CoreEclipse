@@ -16,7 +16,7 @@ public class CommunicationServiceFactory implements ServiceFactory {
 		
 		System.out.println(bundle.getSymbolicName());
 		if (bundle.getSymbolicName().equals("OSGI.LISA.communication.impl")) {
-			comService = new OPCUA();
+			comService = new OPC();
 		} else if(bundle.getSymbolicName().equals("OSGI.LISA.communication.impl2")) {
 			comService = new OPCUA();
 		} else {

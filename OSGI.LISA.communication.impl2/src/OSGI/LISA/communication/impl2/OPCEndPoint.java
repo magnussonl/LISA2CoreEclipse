@@ -9,12 +9,12 @@ import LISA.EndPointCore.LISAEndPointCore;
 import OSGI.LISA.communication.HardwareCommunication;
 
 public class OPCEndPoint extends LISAEndPointCore {
-	public OPCEndPoint(BundleContext context) {
+	public OPCEndPoint() {
 
 		Connection connection = createConnection();
 
-		CommunicationService s = new CommunicationService(this, connection, "test", "test", context);
-		CommunicationService2 s2 = new CommunicationService2(this, connection, "test", "test", context);
+		CommunicationService s = new CommunicationService(this, connection, "test", "test");
+		CommunicationService2 s2 = new CommunicationService2(this, connection, "test", "test");
 
 		services.put("OPCService", s);
 		services.put("OPCService2", s2);

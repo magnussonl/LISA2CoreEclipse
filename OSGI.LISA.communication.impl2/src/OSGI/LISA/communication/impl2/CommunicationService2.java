@@ -17,9 +17,8 @@ public class CommunicationService2 extends LISAServiceCore {
 	CommunicationServiceTracker serviceTracker;
 	BundleContext context;
 	
-	public CommunicationService2(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub, BundleContext context) {
+	public CommunicationService2(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
         super(epIn, connection, topicInSub, topicInPub);
-        this.context = context;
     }
 
 	@Override

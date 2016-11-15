@@ -1,7 +1,5 @@
 package OSGI.LISA.communication.impl2;
 
-import java.lang.reflect.Method;
-import java.util.Iterator;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -18,7 +16,7 @@ public class Activator implements BundleActivator {
 		serviceTracker.open();
 		HardwareCommunication comService = (HardwareCommunication) serviceTracker.getService();
 		
-		new OPCEndPoint(context);
+		new OPCEndPoint();
 
 	}
 
