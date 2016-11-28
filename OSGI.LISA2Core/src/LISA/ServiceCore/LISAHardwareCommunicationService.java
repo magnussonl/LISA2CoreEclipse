@@ -6,10 +6,15 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.util.tracker.ServiceTracker;
 
 import LISA.EndPointCore.LISAEndPointCore;
+//import osgi.lisa.sim.com.robota.communication.HardwareCommunication;
+import LISA.Utils.HardwareCommunication;
 
 public abstract class LISAHardwareCommunicationService extends LISAServiceCore {
 	
+	public HardwareCommunication hardwareConnection;
+	
 	public ServiceTracker serviceTracker;
+
 	
 	public LISAHardwareCommunicationService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker stIn) {
 		super(epIn, connection, topicIn);
@@ -32,6 +37,6 @@ public abstract class LISAHardwareCommunicationService extends LISAServiceCore {
 		this.serviceTracker = serviceTracker;
 	}
 
-	public abstract void assignCommunicationService();
+	public abstract void getCommunicationService();
 
 }

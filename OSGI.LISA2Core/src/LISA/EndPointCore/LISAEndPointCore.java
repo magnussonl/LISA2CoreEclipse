@@ -131,7 +131,7 @@ public abstract class LISAEndPointCore implements Runnable {
 
 				if (s.getClass().getSuperclass().getName().equals("LISA.ServiceCore.LISAHardwareCommunicationService") && s.isStarted()) {
 					LISAHardwareCommunicationService hcs = (LISAHardwareCommunicationService) s;
-					hcs.assignCommunicationService();
+					hcs.getCommunicationService();
 					if (hcs.getServiceTracker().getService() == null) {
 						s.setState(state.WAITING);
 						state = s.getState();

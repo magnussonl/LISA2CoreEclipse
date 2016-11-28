@@ -7,11 +7,11 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import LISA.EndPointCore.LISAEndPointCore;
 import LISA.ServiceCore.LISAHardwareCommunicationService;
-import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
+import LISA.Utils.HardwareCommunication;
+
 
 public class RobotAReaderService extends LISAHardwareCommunicationService {
 	
-	RobotAHardwareCommunication hardCom;
 
 	public RobotAReaderService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker st) {
 		super(epIn, connection, topicIn, st);
@@ -33,7 +33,7 @@ public class RobotAReaderService extends LISAHardwareCommunicationService {
 		
 		System.out.println(time);
 		
-		hardCom.readValue(1, "a");
+		hardwareConnection.readValue(1, "a");
 		return false;
 	}
 
@@ -50,10 +50,12 @@ public class RobotAReaderService extends LISAHardwareCommunicationService {
 	}
 
 	@Override
-	public void assignCommunicationService() {
-		hardCom = (RobotAHardwareCommunication) serviceTracker.getService();
+	public void getCommunicationService() {
+		hardwareConnection = (HardwareCommunication) serviceTracker.getService();
 		
 	}
+
+
 	
 	
 	

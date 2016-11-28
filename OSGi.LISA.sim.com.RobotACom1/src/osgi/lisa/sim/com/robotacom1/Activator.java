@@ -4,7 +4,9 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
+import LISA.Utils.HardwareCommunication;
+
+
 
 public class Activator implements BundleActivator {
 
@@ -22,7 +24,7 @@ public class Activator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 		
-		reg = context.registerService(RobotAHardwareCommunication.class.getName(), new RobotAComOPCUA(), null);
+		reg = context.registerService(HardwareCommunication.class.getName(), new RobotAComOPCUA(), null);
 		
 	}
 

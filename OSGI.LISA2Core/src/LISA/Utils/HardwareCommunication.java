@@ -1,8 +1,8 @@
-package osgi.lisa.sim.com.robota.communication;
+package LISA.Utils;
 
 import org.opcfoundation.ua.builtintypes.DataValue;
 
-public interface RobotAHardwareCommunication {
+public interface HardwareCommunication {
 	
 	public boolean connect(String url);
 

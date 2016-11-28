@@ -7,8 +7,8 @@ Bundle-Activator: osgi.lisa.sim.com.robota.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: LISA.EndPointCore,
  LISA.ServiceCore,
+ LISA.Utils,
  javax.jms,
  org.opcfoundation.ua.builtintypes,
  org.osgi.framework;version="1.3.0",
  org.osgi.util.tracker;version="1.5.1"
-Export-Package: osgi.lisa.sim.com.robota.communication

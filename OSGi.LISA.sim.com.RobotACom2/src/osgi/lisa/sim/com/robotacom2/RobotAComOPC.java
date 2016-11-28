@@ -4,9 +4,9 @@ package osgi.lisa.sim.com.robotacom2;
 
 import org.opcfoundation.ua.builtintypes.DataValue;
 
-import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
+import LISA.Utils.HardwareCommunication;
 
-public class RobotAComOPC implements RobotAHardwareCommunication {
+public class RobotAComOPC implements HardwareCommunication {
 
 	@Override
 	public boolean connect(String url) {

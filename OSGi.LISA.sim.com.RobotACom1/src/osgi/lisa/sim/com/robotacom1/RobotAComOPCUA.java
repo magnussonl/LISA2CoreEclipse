@@ -3,9 +3,11 @@ package osgi.lisa.sim.com.robotacom1;
 
 import org.opcfoundation.ua.builtintypes.DataValue;
 
-import osgi.lisa.sim.com.robota.communication.RobotAHardwareCommunication;
+import LISA.Utils.HardwareCommunication;
 
-public class RobotAComOPCUA implements RobotAHardwareCommunication {
+
+
+public class RobotAComOPCUA implements HardwareCommunication {
 
 	@Override
 	public boolean connect(String url) {
