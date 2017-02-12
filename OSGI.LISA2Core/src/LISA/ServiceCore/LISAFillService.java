@@ -37,10 +37,10 @@ public abstract class LISAFillService extends LISAServiceCore {
 			try {
 				text = textMessage.getText();
 				LISAMessage lisaMsg = (LISAMessage) LISAMarshaller.unMarshall(LISAMessage.class, text);
-				LISAMessage msgToSend = fill(lisaMsg);
-				publisher.sendMsg(msgToSend);
+				fill(lisaMsg);
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
+				System.out.println("catch");
 				e.printStackTrace();
 			}
 
@@ -48,6 +48,6 @@ public abstract class LISAFillService extends LISAServiceCore {
 
 	}
 
-	public abstract LISAMessage fill(LISAMessage lisaMsg);
+	public abstract void fill(LISAMessage lisaMsg);
 
 }

@@ -13,13 +13,13 @@ import LISA.Message.LISAMessage;
 import LISA.Utils.LISAMarshaller;
 
 public abstract class LISAFoldService extends LISAServiceCore {
-	
-	protected int maxSize = 10;
-	protected List<LISAMessage> dataList = new LinkedList<LISAMessage>();
+
+	private int maxSize = 10;
+	private List<LISAMessage> dataList = new LinkedList<LISAMessage>();
 
 	public LISAFoldService(LISAEndPointCore epIn, Connection connection, String topicIn) {
 		super(epIn, connection, topicIn);
-		// TODO Auto-generated constructor stub 
+		// TODO Auto-generated constructor stub
 	}
 
 	public LISAFoldService(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
@@ -27,17 +27,15 @@ public abstract class LISAFoldService extends LISAServiceCore {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Override
 	public boolean action() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-
 	@Override
 	public void onMessage(Message message) {
-		
+
 		if (message instanceof TextMessage) {
 			TextMessage textMessage = (TextMessage) message;
 			String text;
@@ -45,24 +43,21 @@ public abstract class LISAFoldService extends LISAServiceCore {
 				text = textMessage.getText();
 				LISAMessage lisaMsg = (LISAMessage) LISAMarshaller.unMarshall(LISAMessage.class, text);
 				
-				if(this.dataList.size() >= maxSize) {
-					this.dataList.remove(0);
-					this.dataList.add(lisaMsg);
-				} else {
-					dataList.add(lisaMsg);
-				}
-				LISAMessage msgToSend = fold(this.dataList);
-				publisher.sendMsg(msgToSend);
+				addMsgToList(lisaMsg);
+				
+
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 	}
+
+	public abstract void fold();
 	
-	public abstract LISAMessage fold(List<LISAMessage> dataList);
+	public abstract void addMsgToList(LISAMessage msgIn);
 
 	public int getMaxSize() {
 		return maxSize;

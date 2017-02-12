@@ -11,12 +11,11 @@ import LISA.Utils.LISAMarshaller;
 
 public abstract class LISAMapService extends LISAServiceCore {
 
-	
-
 	public LISAMapService(LISAEndPointCore epIn, Connection connection, String topicIn) {
 		super(epIn, connection, topicIn);
 		// TODO Auto-generated constructor stub
 	}
+
 	public LISAMapService(LISAEndPointCore epIn, Connection connection, String topicInSub, String topicInPub) {
 		super(epIn, connection, topicInSub, topicInPub);
 		// TODO Auto-generated constructor stub
@@ -42,7 +41,7 @@ public abstract class LISAMapService extends LISAServiceCore {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 	}

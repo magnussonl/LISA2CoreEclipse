@@ -9,7 +9,7 @@ package LISA.ServiceCore;
  *
  * @author Linus
  */
-public interface LISAServiceLlifeCycle {
+public interface LISAServiceLifeCycle {
     
     public abstract void onStart();
     

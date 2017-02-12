@@ -23,7 +23,7 @@ import javax.jms.Session;
  *
  * @author Linus
  */
-public abstract class LISAServiceCore extends Subscriber implements LISAServiceLlifeCycle {
+public abstract class LISAServiceCore extends Subscriber implements LISAServiceLifeCycle {
 
     public enum ServiceState {
         SETUP, STARTUP, ACTION, END, WAITING
@@ -81,7 +81,7 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     }
 
     private void registerService() {
-    	System.out.println("sendning msg from " + this.getClass().getName());
+//    	System.out.println("sendning msg from " + this.getClass().getName());
     	LISAMessage registerMsg = new LISAMessage();
 		registerMsg.getMessageBody().setType("ServiceMonitoringRegister");
 		
@@ -113,7 +113,7 @@ public abstract class LISAServiceCore extends Subscriber implements LISAServiceL
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
-    private void setSession(Session session) {
+    public void setSession(Session session) {
         this.session = session;
     }
 

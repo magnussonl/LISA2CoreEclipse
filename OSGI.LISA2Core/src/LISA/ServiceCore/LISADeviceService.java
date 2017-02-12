@@ -9,25 +9,23 @@ import LISA.EndPointCore.LISAEndPointCore;
 //import osgi.lisa.sim.com.robota.communication.HardwareCommunication;
 import LISA.Utils.HardwareCommunication;
 
-public abstract class LISAHardwareCommunicationService extends LISAServiceCore {
+public abstract class LISADeviceService extends LISAServiceCore {
 	
 	public HardwareCommunication hardwareConnection;
 	
 	public ServiceTracker serviceTracker;
 
 	
-	public LISAHardwareCommunicationService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker stIn) {
+	public LISADeviceService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker stIn) {
 		super(epIn, connection, topicIn);
 		this.serviceTracker = stIn;
 	}
 	
-	public LISAHardwareCommunicationService(LISAEndPointCore epIn, Connection connection, String topicInSub,
+	public LISADeviceService(LISAEndPointCore epIn, Connection connection, String topicInSub,
 			String topicInPub, ServiceTracker stIn) {
 		super(epIn, connection, topicInSub, topicInPub);
 		this.serviceTracker = stIn;
 	}
-	
-	
 	
 	public ServiceTracker getServiceTracker() {
 		return serviceTracker;

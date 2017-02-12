@@ -5,7 +5,7 @@
  */
 package LISA.EndPointCore;
 
-import LISA.ServiceCore.LISAHardwareCommunicationService;
+import LISA.ServiceCore.LISADeviceService;
 import LISA.ServiceCore.LISAServiceCore;
 import LISA.ServiceCore.LISAServiceCore.ServiceState;
 import LISA.Utils.Config.Config;
@@ -130,7 +130,7 @@ public abstract class LISAEndPointCore implements Runnable {
 				ServiceState state = s.getState();
 
 				if (s.getClass().getSuperclass().getName().equals("LISA.ServiceCore.LISAHardwareCommunicationService") && s.isStarted()) {
-					LISAHardwareCommunicationService hcs = (LISAHardwareCommunicationService) s;
+					LISADeviceService hcs = (LISADeviceService) s;
 					hcs.getCommunicationService();
 					if (hcs.getServiceTracker().getService() == null) {
 						s.setState(state.WAITING);
