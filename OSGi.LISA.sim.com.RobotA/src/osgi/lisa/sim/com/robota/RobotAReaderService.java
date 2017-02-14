@@ -1,5 +1,8 @@
 package osgi.lisa.sim.com.robota;
 
+import java.awt.List;
+import java.util.LinkedList;
+
 import javax.jms.Connection;
 import javax.jms.Message;
 
@@ -13,6 +16,8 @@ import LISA.Utils.HardwareCommunication;
 public class RobotAReaderService extends LISAHardwareCommunicationService {
 	
 
+	LinkedList<String> myList = new LinkedList<String>();
+	
 	public RobotAReaderService(LISAEndPointCore epIn, Connection connection, String topicIn, ServiceTracker st) {
 		super(epIn, connection, topicIn, st);
 		
@@ -20,20 +25,27 @@ public class RobotAReaderService extends LISAHardwareCommunicationService {
 
 	@Override
 	public void onStart() {
-
-		
-		setExecuteFrequency(1000);
+	
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getCommunicationService();
+		hardwareConnection.addItemToRead("PLC1.Application.GVL.antal_puckar");
 
 	}
 
 	@Override
 	public boolean action() {
 		
-		Long time = System.nanoTime();
+		if(hardwareConnection.checkValue("PLC1.Application.GVL.antal_puckar")) {
+			String v = hardwareConnection.readValue("PLC1.Application.GVL.antal_puckar");
+			System.out.println(v);
+			myList.add(v);
+		}
 		
-		System.out.println(time);
-		
-		hardwareConnection.readValue(1, "a");
 		return false;
 	}
 

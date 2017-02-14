@@ -15,7 +15,6 @@ public class RobotAServiceTracker extends ServiceTracker {
 	}
 
 	public Object addingService(ServiceReference reference) {
-		System.out.println("adding");
 		return super.addingService(reference);
 	}
 

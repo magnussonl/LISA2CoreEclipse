@@ -1,12 +1,15 @@
 package LISA.Utils;
 
-import org.opcfoundation.ua.builtintypes.DataValue;
 
 public interface HardwareCommunication {
 	
 	public boolean connect(String url);
+	
+	public void addItemToRead(String itemId);
+	
+	public boolean checkValue(String itemId);
 
-	public DataValue readValue(int lvl, String name);
+	public String readValue(String itemId);
 
 	public boolean setInt(int lvl, String name, int value);
 }

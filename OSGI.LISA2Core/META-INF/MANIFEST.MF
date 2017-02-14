@@ -13,7 +13,10 @@ Import-Package: com.google.common.collect,
  org.eclipse.persistence,
  org.eclipse.persistence.jaxb,
  org.glassfish.json,
- org.opcfoundation.ua.builtintypes,
+ org.jinterop.dcom.common,
+ org.jinterop.dcom.core,
+ org.openscada.opc.lib.common,
+ org.openscada.opc.lib.da,
  org.osgi.framework,
  org.osgi.util.tracker;version="1.5.1"
 Export-Package: LISA.EndPointCore,
@@ -22,4 +25,5 @@ Export-Package: LISA.EndPointCore,
  LISA.ServiceCore.Publisher,
  LISA.ServiceCore.Subscriber,
  LISA.Utils,
- LISA.Utils.Config
+ LISA.Utils.Config,
+ OPCAccess
