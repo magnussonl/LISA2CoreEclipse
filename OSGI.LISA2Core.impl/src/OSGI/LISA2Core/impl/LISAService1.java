@@ -35,6 +35,7 @@ public class LISAService1 extends LISAServiceCore {
         LISAMessage msgToSend = new LISAMessage();
 
         msgToSend.getMessageBody().setType("testMess");
+        msgToSend.getMessageHeader().setSenderID(this.getClass().getSimpleName());
         
         LinkedList<KeyPairValue> dataList = new LinkedList<KeyPairValue>();
 

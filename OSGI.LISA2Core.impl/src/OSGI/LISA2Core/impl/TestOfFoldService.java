@@ -27,10 +27,17 @@ public class TestOfFoldService extends LISAFoldService {
 		
 	}
 
+
 	@Override
-	public LISAMessage fold(List<LISAMessage> dataList) {
+	public void fold() {
 		// TODO Auto-generated method stub
-		return null;
+		
+	}
+
+	@Override
+	public void addMsgToList(LISAMessage msgIn) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
