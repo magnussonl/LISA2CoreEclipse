@@ -9,11 +9,11 @@ import javax.jms.Message;
 import org.osgi.util.tracker.ServiceTracker;
 
 import LISA.EndPointCore.LISAEndPointCore;
-import LISA.ServiceCore.LISAHardwareCommunicationService;
+import LISA.ServiceCore.LISADeviceService;
 import LISA.Utils.HardwareCommunication;
 
 
-public class RobotAReaderService extends LISAHardwareCommunicationService {
+public class RobotAReaderService extends LISADeviceService {
 	
 
 	LinkedList<String> myList = new LinkedList<String>();
