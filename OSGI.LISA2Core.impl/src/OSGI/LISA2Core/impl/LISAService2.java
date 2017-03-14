@@ -35,12 +35,7 @@ public class LISAService2 extends LISAServiceCore {
                 System.out.println(msg);
                 LinkedList<KeyPairValue> list = msg.getMessageBody().getKeyPairValues();
                 
-//                int i = 0;
-//                for (KeyPairValue keyPairValue : list) {
-//                    System.out.println(keyPairValue);
-//                    System.out.println(i);
-//                    i++;
-//                }
+
             }
         } catch (JMSException ex) {
             Logger.getLogger(LISAService1.class.getName()).log(Level.SEVERE, null, ex);
