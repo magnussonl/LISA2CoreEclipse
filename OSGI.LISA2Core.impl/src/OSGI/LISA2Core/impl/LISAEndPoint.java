@@ -13,7 +13,6 @@ public class LISAEndPoint extends LISAEndPointCore{
         LISAService2 s2 = new LISAService2(this, connection, "test", "test");
 
         services.put(s1.getServiceName(), s1);
-        
         services.put(s2.getServiceName(), s2);
 
         getEndpointThread().start();
